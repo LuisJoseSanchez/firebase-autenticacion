@@ -10,6 +10,18 @@
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script>
     var ref = new Firebase("https://lj-autenticacion.firebaseio.com/");
-  </script> 
+    
+    var user = {
+      email: "luisjose@gmail.com",
+      password: "123"
+    }
+    ref.createUser(user, function(error) {
+      if(error) {
+        console.log(error);
+      } else {
+        console.log("Usuario registrado correctamente");
+      }
+    });
+  </script>
 </body>
 </html>
