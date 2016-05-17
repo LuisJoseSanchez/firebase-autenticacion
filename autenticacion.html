@@ -11,17 +11,37 @@
   <script>
     var ref = new Firebase("https://lj-autenticacion.firebaseio.com/");
     
+    ref.onAuth(function(data) {
+      if(data) {
+        console.log("El usuario " + data.uid+ " se ha logueado correctamente.");
+      } else {
+        console.log("No se ha iniciado sesión.");
+      }
+    });
+    
     var user = {
       email: "luisjose@gmail.com",
       password: "123"
     }
+    
+    // Creación de usuario.
+    // Descomentar la primera vez que se ejecute la aplicación.
+    /*
     ref.createUser(user, function(error) {
       if(error) {
+        console.log(error.code);
         console.log(error);
       } else {
         console.log("Usuario registrado correctamente");
       }
     });
+    */
+    
+    // Descomentar para hacer login
+    //ref.authWithPassword(user);
+    
+    // Logout
+    ref.unauth();
   </script>
 </body>
 </html>
